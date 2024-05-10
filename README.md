@@ -10,4 +10,4 @@
 
 ## Run
 
-        python main.py
+        python main.py --path="path/to/taxonomy_faqs_cleaned.md"
