@@ -1,0 +1,7 @@
+colorlog==6.8.2
+gradio==4.29.0
+langchain==0.1.19
+langchain_openai==0.1.6
+openai==1.28.0
+python-dotenv==1.0.1
+qdrant_client==1.9.1
