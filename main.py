@@ -1,12 +1,13 @@
+import gradio as gr
+import asyncio
+import argparse
 from typing import List
 from src.llm import RAG_LLM
 
-if __name__ == "__main__":
 
-    import gradio as gr
-    import asyncio
-
-    llm_interface = RAG_LLM("taxonomy_faqs_cleaned.md")
+def main(md_file_path: str):
+    """Main function to run the Gradio interface with the specified markdown file path."""
+    llm_interface = RAG_LLM(md_file_path)
 
     async def process_message_async(message: str, history: List[List[str]]) -> str:
         """Asynchronous function to process the prompt and obtain a response."""
@@ -32,3 +33,13 @@ if __name__ == "__main__":
 
     # Launch the Gradio interface
     iface.launch()
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Specify the path to the markdown file containing Q&A"
+    )
+    parser.add_argument("--path", type=str, help="Path to the md file containing Q&A")
+    args = parser.parse_args()
+
+    main(args.path)
